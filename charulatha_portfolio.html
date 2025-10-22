@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charulatha K - Full Stack Developer Portfolio</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Animate On Scroll -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #2B2D42;
+            --secondary-color: #8D99AE;
+            --accent-color: #D90429;
+            --text-dark: #22223b;
+            --text-light: #F8F8F8;
+            --bg-light: #EDF2F4;
+            --bg-dark-card: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            background-image: url('https://www.transparenttextures.com/patterns/clean-textile.png');
+        }
+
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(5px);
+        }
+
+        .nav-link {
+            color: var(--primary-color) !important;
+            font-weight: 500;
+            transition: color 0.3s ease, border-bottom 0.3s ease;
+        }
+
+        .nav-link:hover, .nav-item .active {
+            color: var(--accent-color) !important;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 3px;
+        }
+
+        #home {
+            background-color: var(--primary-color);
+            background-image: linear-gradient(rgba(43, 45, 66, 0.9), rgba(43, 45, 66, 0.9)), 
+                              url('profile_bg.png'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; 
+            
+            color: var(--text-light);
+            padding: 120px 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--accent-color);
+            box-shadow: 0 0 20px rgba(217, 4, 41, 0.5);
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+        }
+
+        .hero-summary {
+            font-size: 1.35rem;
+            font-weight: 300;
+            color: var(--secondary-color);
+            margin-bottom: 2.5rem;
+        }
+        .section-padding {
+            padding: 90px 0;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 50px;
+            font-weight: 700;
+            border-bottom: 4px solid var(--accent-color);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+        .custom-card {
+            background: var(--bg-dark-card);
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .custom-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 45px rgba(217, 4, 41, 0.2); 
+        }
+        
+        .project-card:hover {
+            border: 1px solid var(--accent-color);
+        }
+
+        .skill-badge {
+            display: inline-block;
+            padding: 8px 15px;
+            margin: 5px;
+            border-radius: 25px;
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+
+        .skill-badge:hover {
+            background-color: var(--accent-color);
+            transform: scale(1.05);
+        }
+        .timeline {
+            border-left: 3px solid var(--secondary-color);
+            padding-left: 20px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 40px;
+            padding-left: 25px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -30px; 
+            top: 7px;
+            width: 18px;
+            height: 18px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            border: 4px solid var(--bg-light);
+            z-index: 1;
+        }
+
+        .timeline-role, .timeline-degree {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1.2;
+        }
+
+        .timeline-company, .timeline-institution {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 5px;
+        }
+        .btn-primary-custom {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            font-weight: 600;
+            padding: 12px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(217, 4, 41, 0.3);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-primary-custom:hover {
+            background-color: #A30222;
+            border-color: #A30222;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-light {
+             border-color: var(--text-light);
+             color: var(--text-light);
+             padding: 12px 30px;
+             border-radius: 8px;
+             transition: background-color 0.3s ease;
+        }
+        
+        .btn-outline-light:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .text-primary-custom {
+            color: var(--primary-color) !important;
+        }
+    </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="56">
+
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand text-danger fw-bold" href="#home">CHARULATHA K</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li> 
+                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 1. Hero Section -->
+    <section id="home" class="text-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    
+                    <!-- User Profile Image -->
+                    <div data-aos="fade-up" data-aos-delay="100" class="mb-4">
+                        <img src="user_prof_pic.jpg" onerror="this.onerror=null; this.src='https://placehold.co/150x150/D90429/EDF2F4?text=CK'" alt="Charulatha K Profile Photo" class="profile-img shadow-lg">
+                    </div>
+
+                    <p class="h4 fw-light text-uppercase" data-aos="fade-up" data-aos-delay="200">Hello, I'm</p>
+                    <h1 class="hero-title mb-3" data-aos="fade-up" data-aos-delay="400">Charulatha K.</h1>
+                    
+                    <p class="hero-summary" data-aos="fade-up" data-aos-delay="600">
+                        Full-Stack Developer with 2+ years experience building web applications, focused on automating HR processes to drive low latency and high supportability.
+                    </p>
+
+                    <div data-aos="fade-up" data-aos-delay="800">
+                        <a href="#contact" class="btn btn-lg btn-primary-custom me-3">Get In Touch <i class="fas fa-paper-plane ms-2"></i></a>
+                        <a href="#experience" class="btn btn-lg btn-outline-light">View Experience</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section-padding bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title" data-aos="fade-up">About Me</h2>
+                    <p class="lead mt-4" data-aos="fade-up" data-aos-delay="200">
+                        I am a dedicated Full-Stack Developer with extensive experience in the Lamp stack, specializing in tools that enhance organizational efficiency.
+                    </p>
+                    <p data-aos="fade-up" data-aos-delay="300">
+                        My background includes developing and maintaining internal enterprise web applications for employee management, training, and performance review systems. I combine Object-Oriented Programming (OOPs) fundamentals with practical skills in JavaScript and Bootstrap to deliver stable, user-friendly, and scalable solutions. I am committed to continuous improvement and quickly adapting to new technical challenges.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section-padding">
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">Technical Skills</h2>
+            <div class="row justify-content-center mt-5 g-4">
+
+                <div class="col-md-6 col-lg-6" data-aos="fade-right" data-aos-delay="100">
+                    <div class="custom-card p-4 h-100">
+                        <h4 class="mb-3 text-primary-custom"><i class="fas fa-code me-2"></i> Frontend & Web</h4>
+                        <div class="d-flex flex-wrap">
+                            <span class="skill-badge">JavaScript</span>
+                            <span class="skill-badge">jQuery</span>
+                            <span class="skill-badge">Bootstrap</span>
+                            <span class="skill-badge">HTML/CSS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="custom-card p-4 h-100">
+                        <h4 class="mb-3 text-primary-custom"><i class="fas fa-server me-2"></i> Backend & Database</h4>
+                        <div class="d-flex flex-wrap">
+                            <span class="skill-badge">PHP Programming</span>
+                            <span class="skill-badge">Java Programming</span>
+                            <span class="skill-badge">MySQL</span>
+                            <span class="skill-badge">Linux</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-6" data-aos="fade-left" data-aos-delay="300">
+                    <div class="custom-card p-4 h-100">
+                        <h4 class="mb-3 text-primary-custom"><i class="fas fa-tools me-2"></i> Tools & Version Control</h4>
+                        <div class="d-flex flex-wrap">
+                            <span class="skill-badge">Git</span>
+                            <span class="skill-badge">GitHub</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-6" data-aos="fade-right" data-aos-delay="400">
+                    <div class="custom-card p-4 h-100">
+                        <h4 class="mb-3 text-primary-custom"><i class="fas fa-puzzle-piece me-2"></i> Methodologies</h4>
+                        <div class="d-flex flex-wrap">
+                            <span class="skill-badge">OOPs (Object-Oriented)</span>
+                            <span class="skill-badge">Data Structures & Algorithm</span>
+                            <span class="skill-badge">Problem-solving</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- Experience Section (Action-Oriented) -->
+    <section id="experience" class="section-padding bg-light">
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">Work Experience</h2>
+            <div class="row justify-content-center mt-5">
+                <div class="col-lg-8">
+                    <div class="timeline">
+
+                        <!-- Role 1: Developer -->
+                        <div class="timeline-item" data-aos="fade-up">
+                            <h4 class="timeline-role">Developer</h4>
+                            <p class="timeline-company mb-1">Genxlead | AUG 2024 - Present</p>
+                            <ul id="developer-bullets" class="list-unstyled mb-4">
+                                <li><i class="fas fa-check-circle me-2 text-danger"></i> <b>Streamlined employee</b> management with a new admin portal, leading to improved HR data management efficiency.</li>
+                                <li><i class="fas fa-check-circle me-2 text-danger"></i> <b>Maintained and developed</b> internal web applications for training, performance reviews, and network access control.</li>
+                                <li><i class="fas fa-check-circle me-2 text-danger"></i> <b>Automated daily tasks</b> like event image generation and email reminders, significantly reducing manual overhead and improving turnaround time.</li>
+                                <li><i class="fas fa-check-circle me-2 text-danger"></i> <b>Implemented features</b> for critical management tools, including room assignment, employee probation tracking, and bulk user photo uploads.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Role 2: Junior Software Programmer -->
+                        <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+                            <h4 class="timeline-role">Junior Software Programmer</h4>
+                            <p class="timeline-company mb-1">Genxlead | Feb 2023 - Aug 2024</p>
+                            <ul id="junior-bullets" class="list-unstyled mb-4">
+                                <li><i class="fas fa-check-circle me-2 text-danger"></i> <b>Developed utility tools</b> using JavaScript for efficient image crop & compression and a web-based terminal emulator.</li>
+                                <li><i class="fas fa-check-circle me-2 text-danger"></i> <b>Enhanced</b> existing task management tools for better tracking, reporting, and team collaboration.</li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Projects Section (ESSENTIAL for recruiters) -->
+    <!-- <section id="projects" class="section-padding">
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">Key Projects</h2>
+            <div class="row mt-5 g-4">
+                
+                <div class="col-md-6 col-lg-3" data-aos="fade-right" data-aos-delay="100">
+                    <div class="custom-card project-card p-4 h-100">
+                        <h4 class="fw-bold mb-2 text-primary-custom">Employee Admin Portal (Enterprise)</h4>
+                        <p class="text-muted">High-priority internal application for centralized HR and management tasks.</p>
+                        <p class="card-text">Designed and implemented a secure web interface for managing core employee data, network access, and probation status. Focus was on ensuring low latency for high-volume data requests.</p>
+                        <div class="mt-3">
+                            <span class="skill-badge bg-primary">PHP</span>
+                            <span class="skill-badge bg-primary">MySQL</span>
+                            <span class="skill-badge bg-primary">Bootstrap</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="custom-card project-card p-4 h-100">
+                        <h4 class="fw-bold mb-2 text-primary-custom">KPM Monitoring & Reporting Tool</h4>
+                        <p class="text-muted">A custom solution to monitor Key Performance Metrics in real-time.</p>
+                        <p class="card-text">Developed reporting dashboards and data visualization components (using jQuery) that provided management with actionable insights, directly supporting **data-driven decision-making** and operational improvements.</p>
+                        <div class="mt-3">
+                            <span class="skill-badge bg-primary">PHP</span>
+                            <span class="skill-badge bg-primary">JavaScript</span>
+                            <span class="skill-badge bg-primary">jQuery</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3" data-aos="fade-left" data-aos-delay="300">
+                    <div class="custom-card project-card p-4 h-100">
+                        <h4 class="fw-bold mb-2 text-primary-custom">Image/Task Automation Suite</h4>
+                        <p class="text-muted">Tools for process automation and development utility.</p>
+                        <p class="card-text">Engineered automation scripts (e.g., daily event image generation, email triggers) and development utilities like a web-based terminal emulator to improve developer workflow and reduce recurring manual work.</p>
+                        <div class="mt-3">
+                            <span class="skill-badge bg-primary">Linux</span>
+                            <span class="skill-badge bg-primary">JavaScript</span>
+                            <span class="skill-badge bg-primary">Automation</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+                    <div class="custom-card project-card p-4 h-100">
+                        <h4 class="fw-bold mb-2 text-primary-custom">Future Project: Modern UI/UX Redesign</h4>
+                        <p class="text-muted">A conceptual project using React or Angular for front-end modernization.</p>
+                        <p class="card-text">Plan to redesign an existing internal tool's front-end using a modern framework (like React or Angular) to improve user experience, responsiveness, and maintainability. Focus on API integration.</p>
+                        <div class="mt-3">
+                            <span class="skill-badge bg-primary">React/Angular</span>
+                            <span class="skill-badge bg-primary">API Design</span>
+                            <span class="skill-badge bg-primary">Tailwind CSS</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section> -->
+    
+    <!-- 6. Education & Certifications Section (Simplified) -->
+    <section id="education" class="section-padding bg-light">
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">Education & Certifications</h2>
+            <div class="row mt-5 g-4">
+                
+                <!-- Education Column -->
+                <div class="col-lg-6" data-aos="fade-right">
+                    <h3 class="h5 mb-4 text-center text-primary-custom fw-bold">
+                        <i class="fas fa-graduation-cap me-2 text-danger"></i> Academic Background
+                    </h3>
+                    <div class="timeline">
+                        <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+                            <h4 class="timeline-degree">B.Sc. in Computer Science</h4>
+                            <p class="timeline-institution">Meenakshi College For Women</p>
+                            <p class="text-muted mb-0">Completed: [Year]</p> 
+                        </div>
+                        <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+                            <h4 class="timeline-degree">HSC</h4>
+                            <p class="timeline-institution">M. R. Matriculation Higher Secondary School</p>
+                            <p class="text-muted mb-0">Completed: [Year]</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certifications Column -->
+                <div class="col-lg-6" data-aos="fade-left">
+                    <h3 class="h5 mb-4 text-center text-primary-custom fw-bold">
+                        <i class="fas fa-certificate me-2 text-danger"></i> Professional Certifications
+                    </h3>
+                    <div class="d-flex flex-column gap-3">
+                        
+                        <div class="custom-card p-4" data-aos="fade-up" data-aos-delay="300">
+                            <h5 class="fw-bold mb-1 text-danger">Introduction to Git and GitHub</h5>
+                            <p class="mb-1">Google | Coursera</p>
+                            <span class="badge bg-secondary">Skills: CLI, Git, GitHub, continuous Integration, Code Review, Issue Tracking</span>
+                        </div>
+                       
+                        <div class="custom-card p-4" data-aos="fade-up" data-aos-delay="200">
+                            <h5 class="fw-bold mb-1 text-danger">Oracle Learning Explorer Badge</h5>
+                            <p class="mb-1">Oracle Corporation</p>
+                            <span class="badge bg-secondary">Foundational Cloud/Tech Knowledge</span>
+                        </div> 
+                        
+                        <div class="custom-card p-4" data-aos="fade-up" data-aos-delay="100">
+                            <h5 class="fw-bold mb-1 text-danger">Certified in Java, HTML, and Data Structures</h5>
+                            <p class="mb-1">Hebeon Technologies</p>
+                            <span class="badge bg-secondary">Skills: C, Python, Java, Data Structures</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 7. Contact Section -->
+    <section id="contact" class="section-padding">
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">Connect with Me</h2>
+            <div class="row justify-content-center mt-5">
+                <div class="col-lg-6">
+                    <p class="lead text-center mb-5" data-aos="fade-up" data-aos-delay="100">
+                        I am currently exploring new developer roles where I can apply my full-stack skills to solve business challenges.
+                    </p>
+                    <div class="d-flex flex-column align-items-center mb-5" data-aos="fade-up" data-aos-delay="200">
+                        <a href="mailto:432charu@gmail.com" class="btn btn-lg btn-primary-custom my-2 w-75">
+                            <i class="fas fa-envelope me-2"></i> 432charu@gmail.com
+                        </a>
+                        <a href="https://linkedin.com/in/charulathak" target="_blank" class="btn btn-lg btn-secondary my-2 w-75 bg-secondary border-secondary">
+                            <i class="fab fa-linkedin me-2"></i> LinkedIn Profile
+                        </a>
+                        <a href="tel:8072077627" class="btn btn-lg btn-outline-dark my-2 w-75">
+                            <i class="fas fa-phone me-2"></i> 8072077627
+                        </a>
+                    </div>
+
+                    <!-- Simplified Contact Form Placeholder -->
+                    <h5 class="text-center text-muted mb-3" data-aos="fade-up">Or Send a Quick Message</h5>
+                    <form data-aos="fade-up" id="contact_frm" data-aos-delay="300" method="POST" onsubmit="return false;">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" rows="4" name="message" placeholder="Your Message" required></textarea>
+                        </div>
+                        <div class="d-grid">
+                            <input type="hidden" name="key" value="1" />
+                            <button type="submit" id="send_btn" class="btn btn-primary-custom">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2025 Charulatha K. Professional Portfolio.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <!-- jQuery (Included for completeness/skill reference) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!-- Animate On Scroll (AOS) JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Sweet Alert 2-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+
+        $(function(){
+            $("#send_btn").on("click",function(){
+                 
+                $(this).prop("disabled", true);
+
+                $.post("action.php", $("#contact_frm").serialize(), function(data){
+                    
+                    $(this).prop("disabled", false);
+                    data=JSON.parse(data);
+                                          
+                    const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                    }
+                    });
+                    Toast.fire({
+                    icon: data.status ? "success" : "warning",
+                    title: data.msg,
+                    });
+
+                    document.getElementById("contact_frm").reset();
+                })
+            });
+        });
+        window.onload = function() {
+            AOS.init({
+                duration: 900,
+                once: true,
+                easing: 'ease-in-out',
+            });
+        };
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script> 
+</body>
+</html>

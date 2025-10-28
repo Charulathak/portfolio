@@ -1,5 +1,5 @@
 <?php
-
+/* This script executes cont form submission. As of now it not needed since the index.html page is published static */
 $key=trim($_REQUEST["key"]);
 if ($key == 1) {
     

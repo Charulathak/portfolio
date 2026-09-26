@@ -65,4 +65,3 @@ My focus is on **continuous improvement** and delivering solutions that ensure *
 * **Email:** 432charu@gmail.com
 * **LinkedIn:** [linkedin.com/in/charulathak](https://linkedin.com/in/charulathak)
 * **GitHub:** [github.com/Charulathak](https://github.com/Charulathak)
-* **Phone:** 8072077627
